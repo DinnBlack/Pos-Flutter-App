@@ -59,7 +59,6 @@ dependencies:
   flutter_toggle_tab: ^1.5.1
   animated_toggle_switch: ^0.8.4
   toggle_switch: ^2.3.0
-  add_to_cart_animation: ^2.0.4
   app_links: ^6.4.0
 
 dev_dependencies:
