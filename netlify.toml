@@ -1,8 +1,6 @@
 [build]
 command = """
-    apt-get update &&
-    apt-get install -y coreutils curl python3 python3-pip &&
-    curl -sL https://storage.googleapis.com/download.flutter.io/flutter_linux_2.10.5-stable.tar.xz | tar -xJf - -C /opt &&
+    curl -fsSL https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.4-stable.tar.xz | tar -xJf - -C /opt &&
     export PATH=/opt/flutter/bin:$PATH &&
     flutter doctor &&
     flutter build web
