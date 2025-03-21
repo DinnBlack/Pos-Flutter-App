@@ -1,9 +1,10 @@
 [build]
 command = """
-  cd /opt/build &&
   curl -fsSL https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.4-stable.tar.xz | tar -xJf - &&
-  export PATH=/opt/build/flutter/bin:$PATH &&
+  export PATH=$PWD/flutter/bin:$PATH &&
+  cd repo &&
   flutter doctor &&
+  flutter pub get &&
   flutter build web
   """
-publish = "build/web"
+publish = "repo/build/web"
