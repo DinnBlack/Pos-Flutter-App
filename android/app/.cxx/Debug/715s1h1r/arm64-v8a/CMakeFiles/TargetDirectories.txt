@@ -1,0 +1,2 @@
+D:/Study/Mobile/Projects/Order_Management/android/app/.cxx/Debug/715s1h1r/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/Study/Mobile/Projects/Order_Management/android/app/.cxx/Debug/715s1h1r/arm64-v8a/CMakeFiles/rebuild_cache.dir
