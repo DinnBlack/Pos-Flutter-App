@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import '../../../../core/utils/constants.dart';
+import '../../../product/views/widgets/qr_code_generator.dart';
 import '../../model/table_model.dart';
 
 class TableListItem extends StatelessWidget {
@@ -11,6 +13,26 @@ class TableListItem extends StatelessWidget {
     super.key,
     required this.table,
   });
+
+  void _showQRCode(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Mã QR Bàn"),
+          content: QRCodeGenerator(
+            tableId: table.id,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Đóng"),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +57,9 @@ class TableListItem extends StatelessWidget {
         : '--:--';
 
     return GestureDetector(
-      onTap: () {
-        // Handle tap
-      },
+      onTap: () => _showQRCode(context),
       child: Container(
-        padding: EdgeInsets.all(defaultPadding),
+        padding: const EdgeInsets.all(defaultPadding),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(10),
@@ -53,9 +73,9 @@ class TableListItem extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                fontSize: 16,
-                color: iconColor,
-              ),
+                    fontSize: 16,
+                    color: iconColor,
+                  ),
             ),
             SvgPicture.asset(
               'assets/icons/table.svg',
@@ -66,8 +86,8 @@ class TableListItem extends StatelessWidget {
             Text(
               operationTime,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                fontSize: 14,
-              ),
+                    fontSize: 14,
+                  ),
             ),
           ],
         ),

@@ -42,14 +42,14 @@ class _HeaderState extends State<Header> {
       padding: const EdgeInsets.all(10),
       child: Row(
         children: [
-          if (!Responsive.isMobile(context))
+          if (Responsive.isTablet(context))
             IconButton(
-              icon: Icon(Icons.menu),
+              icon: const Icon(Icons.menu),
               onPressed: context.read<MenuAppController>().controlMenu,
             ),
           if (Responsive.isMobile(context)) ...[
             IconButton(
-              icon: Icon(Icons.menu),
+              icon: const Icon(Icons.menu),
               onPressed: context.read<MenuAppController>().controlMenu,
             ),
             Expanded(
@@ -66,20 +66,21 @@ class _HeaderState extends State<Header> {
               icon: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  Icon(Icons.shopping_cart),
+                  const Icon(Icons.shopping_cart),
                   if (cartCount > 0)
                     Positioned(
                       top: -4,
                       right: -4,
                       child: Container(
-                        padding: EdgeInsets.all(4),
-                        decoration: BoxDecoration(
+                        padding: EdgeInsets.all(5),
+                        decoration: const BoxDecoration(
                           color: Colors.red,
                           shape: BoxShape.circle,
                         ),
                         child: Text(
                           cartCount.toString(),
-                          style: TextStyle(color: Colors.white, fontSize: 12),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 12),
                         ),
                       ),
                     ),
@@ -88,7 +89,7 @@ class _HeaderState extends State<Header> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyCart()),
+                  MaterialPageRoute(builder: (context) => const MyCart()),
                 );
               },
             ),

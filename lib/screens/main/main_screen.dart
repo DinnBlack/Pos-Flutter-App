@@ -15,13 +15,11 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int selectedIndex = 0; // Mặc định là Dashboard
-
-  // Danh sách các màn hình tương ứng với mỗi tab
+  int selectedIndex = 0;
   final List<Widget> pages = [
-    DashboardScreen(),
-    ActivityScreen(),
-    InventoryScreen(),
+    const DashboardScreen(),
+    const ActivityScreen(),
+    const InventoryScreen(),
   ];
 
   void onTabSelected(int index) {
@@ -29,7 +27,6 @@ class _MainScreenState extends State<MainScreen> {
       selectedIndex = index;
     });
 
-    // Đóng Drawer sau khi chọn tab (trên mobile)
     if (!Responsive.isDesktop(context)) {
       Navigator.pop(context);
     }
@@ -41,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
       key: context.read<MenuAppController>().scaffoldKey,
       drawer: SideMenu(
         onTabSelected: onTabSelected,
-        selectedIndex: selectedIndex, // Truyền giá trị selectedIndex
+        selectedIndex: selectedIndex,
       ),
       body: SafeArea(
         child: Row(
@@ -51,17 +48,16 @@ class _MainScreenState extends State<MainScreen> {
               Expanded(
                 child: SideMenu(
                   onTabSelected: onTabSelected,
-                  selectedIndex: selectedIndex, // Truyền selectedIndex vào SideMenu
+                  selectedIndex: selectedIndex,
                 ),
               ),
             Expanded(
               flex: 5,
-              child: pages[selectedIndex], // Hiển thị màn hình theo tab được chọn
+              child: pages[selectedIndex],
             ),
           ],
         ),
       ),
     );
   }
-
 }

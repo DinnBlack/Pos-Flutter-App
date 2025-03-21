@@ -110,7 +110,7 @@ class ProductListInventory extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () => onProductSelected(product),
                     child: Container(
-                      padding: EdgeInsets.all(defaultPadding),
+                      padding: const EdgeInsets.all(defaultPadding),
                       height: 40,
                       width: 40,
                       decoration: BoxDecoration(
@@ -121,7 +121,7 @@ class ProductListInventory extends StatelessWidget {
                       child: SvgPicture.asset(
                         'assets/icons/more.svg',
                         colorFilter:
-                            ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+                            const ColorFilter.mode(Colors.grey, BlendMode.srcIn),
                       ),
                     ),
                   ),

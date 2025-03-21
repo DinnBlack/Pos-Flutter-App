@@ -46,7 +46,7 @@ class _CategoryListState extends State<CategoryList> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120,
+      height: Responsive.isMobile(context) ? 60 : 120,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: demoCategories.length + 1,

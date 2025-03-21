@@ -25,9 +25,9 @@ class _ActivityScreenState extends State<ActivityScreen> {
       case 0:
         return const BillingQueueScreen();
       case 1:
-        return TableScreen();
+        return const TableScreen();
       case 2:
-        return OrderScreen();
+        return const OrderScreen();
       default:
         return const BillingQueueScreen();
     }

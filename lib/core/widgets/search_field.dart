@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../utils/constants.dart';
-
 class SearchField extends StatelessWidget {
   final TextEditingController controller;
   final Function(String) onSearchChanged;
@@ -10,7 +8,8 @@ class SearchField extends StatelessWidget {
   const SearchField({
     super.key,
     required this.controller,
-    required this.onSearchChanged, required this.hintText,
+    required this.onSearchChanged,
+    required this.hintText,
   });
 
   @override
@@ -21,13 +20,15 @@ class SearchField extends StatelessWidget {
     return TextField(
       controller: controller,
       onChanged: onSearchChanged,
+      style: const TextStyle(fontSize: 14),
       decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20),
         hintText: hintText,
         fillColor: colors.secondary,
         filled: true,
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: const BorderRadius.all(Radius.circular(30)),
+          borderRadius: BorderRadius.all(Radius.circular(30)),
         ),
       ),
     );

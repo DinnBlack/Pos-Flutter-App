@@ -31,7 +31,7 @@ class TableList extends StatelessWidget {
         final floorTables =
             tables.where((table) => table.floorId == floor.id).toList();
         if (floorTables.isEmpty) {
-          return SizedBox.shrink();
+          return const SizedBox.shrink();
         }
 
         bool isLastFloor = (isSingleFloor || floorIndex == floors.length - 1);
@@ -44,7 +44,7 @@ class TableList extends StatelessWidget {
                 padding: const EdgeInsets.all(defaultPadding),
                 child: Text(
                   floor.name,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -77,10 +77,10 @@ class TableList extends StatelessWidget {
               );
             }),
             if (!isLastFloor) ...[
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: const DashDivider(),
+              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: DashDivider(),
               ),
             ],
           ],

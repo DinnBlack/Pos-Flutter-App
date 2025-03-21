@@ -99,7 +99,7 @@ class _MyCartState extends State<MyCart> {
               GestureDetector(
                 onTap: () {},
                 child: Container(
-                  padding: EdgeInsets.all(defaultPadding),
+                  padding: const EdgeInsets.all(defaultPadding),
                   height: 40,
                   width: 40,
                   decoration: BoxDecoration(
@@ -108,7 +108,8 @@ class _MyCartState extends State<MyCart> {
                   ),
                   child: SvgPicture.asset(
                     'assets/icons/order.svg',
-                    colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+                    colorFilter:
+                        const ColorFilter.mode(Colors.grey, BlendMode.srcIn),
                   ),
                 ),
               ),
@@ -133,7 +134,7 @@ class _MyCartState extends State<MyCart> {
                   );
                 },
                 child: Container(
-                  padding: EdgeInsets.all(defaultPadding),
+                  padding: const EdgeInsets.all(defaultPadding),
                   height: 40,
                   width: 40,
                   decoration: BoxDecoration(
@@ -142,7 +143,8 @@ class _MyCartState extends State<MyCart> {
                   ),
                   child: SvgPicture.asset(
                     'assets/icons/delete.svg',
-                    colorFilter: ColorFilter.mode(Colors.red, BlendMode.srcIn),
+                    colorFilter:
+                        const ColorFilter.mode(Colors.red, BlendMode.srcIn),
                   ),
                 ),
               ),
@@ -208,10 +210,10 @@ class _MyCartState extends State<MyCart> {
               0, (sum, item) => sum + (item.product.price * item.quantity));
         }
         if (totalPrice == 0) {
-          return SizedBox.shrink();
+          return const SizedBox.shrink();
         } else {
           return Container(
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: colors.background,
               borderRadius: BorderRadius.circular(10),
@@ -219,7 +221,7 @@ class _MyCartState extends State<MyCart> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
@@ -237,7 +239,7 @@ class _MyCartState extends State<MyCart> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
@@ -253,7 +255,7 @@ class _MyCartState extends State<MyCart> {
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide.none,
                       ),
-                      contentPadding: EdgeInsets.symmetric(
+                      contentPadding: const EdgeInsets.symmetric(
                         vertical: 10,
                         horizontal: 20,
                       ), // Padding bên trong TextField

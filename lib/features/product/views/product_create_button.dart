@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/utils/constants.dart';
-
-class TableCreateButton extends StatelessWidget {
-  const TableCreateButton({super.key});
+class ProductCreateButton extends StatelessWidget {
+  const ProductCreateButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +17,11 @@ class TableCreateButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Text(
-            'Thêm bàn',
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-            ),
+            'Thêm sản phẩm',
+            style: TextStyle(fontSize: 14),
+          ),
+          const SizedBox(
+            width: 10,
           ),
           GestureDetector(
             onTap: () {},

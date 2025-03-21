@@ -10,7 +10,7 @@ class FloorEditButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: colors.secondary,
@@ -18,7 +18,7 @@ class FloorEditButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          const Text(
             'Chỉnh sửa tầng',
             style: TextStyle(
               fontWeight: FontWeight.w700,
@@ -27,16 +27,16 @@ class FloorEditButton extends StatelessWidget {
           GestureDetector(
             onTap: () {},
             child: Container(
-              padding: EdgeInsets.all(defaultPadding),
-              height: 40,
-              width: 40,
+              padding: const EdgeInsets.all(5),
+              height: 30,
+              width: 30,
               decoration: BoxDecoration(
                 color: Colors.green.withOpacity(0.1),
                 borderRadius: const BorderRadius.all(Radius.circular(30)),
               ),
               child: SvgPicture.asset(
                 'assets/icons/edit.svg',
-                colorFilter: ColorFilter.mode(Colors.green, BlendMode.srcIn),
+                colorFilter: const ColorFilter.mode(Colors.green, BlendMode.srcIn),
               ),
             ),
           ),

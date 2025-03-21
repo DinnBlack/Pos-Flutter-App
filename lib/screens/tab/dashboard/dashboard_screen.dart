@@ -85,7 +85,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              flex: 5,
+              flex: 7,
               child: Column(
                 children: [
                   Expanded(
@@ -95,8 +95,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             if (!isMobile)
-              Expanded(
-                flex: 2,
+              const Expanded(
+                flex: 3,
                 child: MyCart(),
               ),
           ],
@@ -124,7 +124,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             },
           ),
         ),
-        SizedBox(height: defaultPadding),
+        const SizedBox(height: defaultPadding),
         if (!Responsive.isMobile(context)) ...[
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -134,7 +134,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               onSearchChanged: _onSearchChanged,
             ),
           ),
-          SizedBox(height: defaultPadding),
+          const SizedBox(height: defaultPadding),
         ],
         Expanded(
           child: BlocBuilder<ProductBloc, ProductState>(
@@ -153,7 +153,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                   return GridView.builder(
                     shrinkWrap: true,
-                    physics: AlwaysScrollableScrollPhysics(),
+                    physics: const AlwaysScrollableScrollPhysics(),
                     itemCount: 16,
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -162,7 +162,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       mainAxisSpacing: defaultPadding,
                       childAspectRatio: 1,
                     ),
-                    itemBuilder: (context, index) => ProductListItemSkeleton(),
+                    itemBuilder: (context, index) => const ProductListItemSkeleton(),
                   );
                 });
               } else if (state is ProductFetchSuccess) {

@@ -19,12 +19,12 @@ class ProductList extends StatelessWidget {
       } else if (Responsive.isTablet(context)) {
         crossAxisCount = 3;
       } else {
-        crossAxisCount = 3;
+        crossAxisCount = 4;
       }
 
       return GridView.builder(
         shrinkWrap: true,
-        physics: AlwaysScrollableScrollPhysics(),
+        physics: const AlwaysScrollableScrollPhysics(),
         itemCount: products.length,
         padding: const EdgeInsets.symmetric(horizontal: 10),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -17,7 +17,6 @@ import '../../../../features/table/views/widgets/table_list_item_skeleton.dart';
 import '../../../../features/table/views/widgets/table_status.dart';
 
 class TableScreen extends StatefulWidget {
-
   const TableScreen({super.key});
 
   @override
@@ -98,8 +97,8 @@ class _TableScreenState extends State<TableScreen> {
   Widget _buildContent() {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             children: [
               Expanded(child: TableCreateButton()),
@@ -110,7 +109,7 @@ class _TableScreenState extends State<TableScreen> {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Padding(
@@ -125,7 +124,7 @@ class _TableScreenState extends State<TableScreen> {
             },
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Expanded(
@@ -180,15 +179,14 @@ class _TableScreenState extends State<TableScreen> {
                               childAspectRatio: 1,
                             ),
                             itemBuilder: (context, index) {
-                              return TableListItemSkeleton();
+                              return const TableListItemSkeleton();
                             },
                           ),
                           if (i != 2) ...[
-                            SizedBox(height: 10),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: const DashDivider(),
+                            const SizedBox(height: 10),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: DashDivider(),
                             ),
                           ],
                         ],
@@ -203,7 +201,7 @@ class _TableScreenState extends State<TableScreen> {
             },
           ),
         ),
-        TableStatus(),
+        const TableStatus(),
       ],
     );
   }
