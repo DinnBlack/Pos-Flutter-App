@@ -1,3 +1,4 @@
+import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:order_management_flutter_app/screens/main/main_customer_screen.dart';
@@ -31,12 +32,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final AppLinks _appLinks = AppLinks();
   late final GoRouter _router;
 
   @override
   void initState() {
     super.initState();
     _router = _createRouter();
+    _handleDeepLinks();
   }
 
   GoRouter _createRouter() {
@@ -56,6 +59,29 @@ class _MyAppState extends State<MyApp> {
         ),
       ],
     );
+  }
+
+  void _handleDeepLinks() async {
+    final Uri? initialUri = await _appLinks.getInitialLink();
+    _processDeepLink(initialUri);
+
+    _appLinks.uriLinkStream.listen((Uri? uri) {
+      _processDeepLink(uri);
+    });
+  }
+
+  void _processDeepLink(Uri? uri) {
+    if (uri == null) return;
+
+    debugPrint("App nhận link: $uri");
+
+    final RegExp regExp = RegExp(r"customer/order/table/(\d+)");
+    final match = regExp.firstMatch(uri.toString());
+
+    if (match != null) {
+      String tableId = match.group(1)!;
+      _router.go('/customer/order/table/$tableId');
+    }
   }
 
   @override
