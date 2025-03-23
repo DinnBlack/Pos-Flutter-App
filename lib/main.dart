@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:app_links/app_links.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:order_management_flutter_app/screens/main/main_customer_screen.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +26,31 @@ void main() {
       builder: (context) => const MyApp(),
     ),
   );
+}
+
+Future<void> setOrientationBasedOnDevice() async {
+  final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+
+  if (Platform.isAndroid) {
+    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    bool isTablet =
+        androidInfo.systemFeatures.contains('android.hardware.screen.large');
+    if (isTablet) {
+      await SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
+    }
+  } else if (Platform.isIOS) {
+    IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+    bool isTablet = iosInfo.model.toLowerCase().contains("ipad");
+    if (isTablet) {
+      await SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
+    }
+  }
 }
 
 class MyApp extends StatefulWidget {

@@ -4,10 +4,10 @@ import 'package:order_management_flutter_app/screens/tab/activity/page/billing_q
 import 'package:order_management_flutter_app/screens/tab/activity/page/order_screen.dart';
 import 'package:order_management_flutter_app/screens/tab/activity/page/table_screen.dart';
 import 'package:order_management_flutter_app/screens/tab/inventory/page/product_screen.dart';
-import 'package:order_management_flutter_app/screens/tab/widgets/activity_header.dart';
+import 'package:order_management_flutter_app/screens/tab/activity/widgets/activity_header.dart';
 
 import '../../../features/report/views/chart.dart';
-import '../widgets/inventory_header.dart';
+import 'widgets/inventory_header.dart';
 
 class InventoryScreen extends StatefulWidget {
   const InventoryScreen({super.key});
@@ -30,9 +30,9 @@ class _InventoryScreenState extends State<InventoryScreen> {
       case 0:
         return const ProductScreen();
       case 1:
-        return TableScreen();
+        return const TableScreen();
       case 2:
-        return LineChartSample2();
+        return const LineChartSample2();
       default:
         return const ProductScreen();
     }

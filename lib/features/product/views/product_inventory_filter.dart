@@ -1,8 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:order_management_flutter_app/features/category/repository/category_data.dart';
-import 'package:order_management_flutter_app/features/product/views/product_create_button.dart';
-
 import '../../category/model/category_model.dart';
 
 class ProductInventoryFilter extends StatefulWidget {
@@ -88,8 +86,6 @@ class _ProductInventoryFilterState extends State<ProductInventoryFilter> {
           ),
         ),
         const SizedBox(width: 10),
-
-        // Dropdown Lọc theo danh mục
         DropdownButtonHideUnderline(
           child: DropdownButton2<String>(
             value: selectedCategory,

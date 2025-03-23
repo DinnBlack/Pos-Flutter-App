@@ -33,15 +33,17 @@ class _ProductScreenState extends State<ProductScreen> {
   void _filterProductsByCategory(String? categoryId) {
     setState(() {
       selectedCategoryId = categoryId;
+
       if (categoryId == null || categoryId.isEmpty) {
         _filteredProducts = List.from(_allProducts);
       } else {
         _filteredProducts = _allProducts.where((product) {
           return product.categoryId == categoryId;
         }).toList();
+        _onSearchChanged(_searchController.text);
       }
+      _sortProducts(selectedSortOption);
     });
-    _onSearchChanged(_searchController.text);
   }
 
   void _sortProducts(String option) {
@@ -64,6 +66,7 @@ class _ProductScreenState extends State<ProductScreen> {
           _filteredProducts.sort((a, b) {
             int idA = int.tryParse(a.id) ?? 0;
             int idB = int.tryParse(b.id) ?? 0;
+            _filterProductsByCategory(selectedCategoryId);
             return idA.compareTo(idB);
           });
           break;
@@ -73,11 +76,19 @@ class _ProductScreenState extends State<ProductScreen> {
 
   void _onSearchChanged(String query) {
     setState(() {
-      _filteredProducts = _allProducts.where((product) {
-        return (selectedCategoryId == null ||
-                product.categoryId == selectedCategoryId) &&
-            product.toString().toLowerCase().contains(query.toLowerCase());
-      }).toList();
+      if (query.isEmpty) {
+        _filteredProducts = selectedCategoryId == null
+            ? List.from(_allProducts)
+            : _allProducts.where((product) {
+                return product.categoryId == selectedCategoryId;
+              }).toList();
+      } else {
+        _filteredProducts = _allProducts.where((product) {
+          return (selectedCategoryId == null ||
+                  product.categoryId == selectedCategoryId) &&
+              product.toString().toLowerCase().contains(query.toLowerCase());
+        }).toList();
+      }
     });
   }
 

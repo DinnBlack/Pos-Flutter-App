@@ -17,7 +17,7 @@ class TableBloc extends Bloc<TableEvent, TableState> {
       TableFetchStarted event, Emitter<TableState> emit) async {
     try {
       emit(TableFetchInProgress());
-      await Future.delayed(Duration(seconds: 2));
+      // await Future.delayed(Duration(seconds: 2));
       final tables = demoTables;
       emit(TableFetchSuccess(tables: tables));
     } on Exception catch (e) {

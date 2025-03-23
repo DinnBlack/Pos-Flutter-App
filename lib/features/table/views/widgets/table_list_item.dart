@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 import '../../../../core/utils/constants.dart';
-import '../../../product/views/widgets/qr_code_generator.dart';
+import '../qr_code_generator.dart';
 import '../../model/table_model.dart';
 
 class TableListItem extends StatelessWidget {
@@ -13,26 +12,6 @@ class TableListItem extends StatelessWidget {
     super.key,
     required this.table,
   });
-
-  void _showQRCode(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text("Mã QR Bàn"),
-          content: QRCodeGenerator(
-            tableId: table.id,
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text("Đóng"),
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +36,16 @@ class TableListItem extends StatelessWidget {
         : '--:--';
 
     return GestureDetector(
-      onTap: () => _showQRCode(context),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => QRCodeWithBackground(
+              table: table,
+            ),
+          ),
+        );
+      },
       child: Container(
         padding: const EdgeInsets.all(defaultPadding),
         decoration: BoxDecoration(

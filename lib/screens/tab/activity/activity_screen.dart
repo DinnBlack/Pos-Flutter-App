@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:order_management_flutter_app/screens/tab/activity/page/billing_queue_screen.dart';
 import 'package:order_management_flutter_app/screens/tab/activity/page/order_screen.dart';
 import 'package:order_management_flutter_app/screens/tab/activity/page/table_screen.dart';
-import 'package:order_management_flutter_app/screens/tab/widgets/activity_header.dart';
+import 'package:order_management_flutter_app/screens/tab/activity/widgets/activity_header.dart';
 
 class ActivityScreen extends StatefulWidget {
   const ActivityScreen({super.key});

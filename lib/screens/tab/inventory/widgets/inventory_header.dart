@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../core/controllers/menu_app_controller.dart';
-import '../../../core/utils/responsive.dart';
-import 'toggle_switch.dart';
+import '../../../../core/controllers/menu_app_controller.dart';
+import '../../../../core/utils/responsive.dart';
+import '../../widgets/toggle_switch.dart';
 
 class InventoryHeader extends StatelessWidget {
   final int selectedIndex;
@@ -14,10 +14,10 @@ class InventoryHeader extends StatelessWidget {
     required this.onToggle,
   });
 
-  final List<String> options = const [
-    "Product",
-    "Table",
-    "Report"
+  final List<Map<String, String>> options = const [
+    {"title": "Product", "icon": "assets/icons/product.svg"},
+    {"title": "Table", "icon": "assets/icons/table-2.svg"},
+    {"title": "Report", "icon": "assets/icons/staff.svg"}
   ];
 
   @override
@@ -28,10 +28,10 @@ class InventoryHeader extends StatelessWidget {
         children: [
           if (!Responsive.isDesktop(context)) ...[
             IconButton(
-              icon: Icon(Icons.menu),
+              icon: const Icon(Icons.menu),
               onPressed: context.read<MenuAppController>().controlMenu,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             )
           ],
@@ -46,7 +46,7 @@ class InventoryHeader extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: " / ${options[selectedIndex]}",
+                  text: " / ${options[selectedIndex]["title"]}",
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.normal,
@@ -56,7 +56,7 @@ class InventoryHeader extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(),
+          const Spacer(),
           ToggleSwitchWidget(
             options: options,
             onToggle: onToggle,
